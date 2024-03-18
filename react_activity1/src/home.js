@@ -2,11 +2,18 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Home = (props) => {
-  const { loggedIn, email } = props
+  const { loggedIn, email, setLoggedIn } = props
   const navigate = useNavigate()
 
   const onButtonClick = () => {
-    // You'll update this function later
+    if (loggedIn) {
+      // Log out
+      setLoggedIn(false);
+      navigate('/login'); // Redirect to the login page after logout
+    } else {
+      // Navigate to the login page
+      navigate('/login');
+    }
   }
 
   return (
